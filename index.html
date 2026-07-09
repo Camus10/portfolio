@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Haris Hidayat - Full Stack Engineer</title>
+  <meta name="description" content="Full Stack Engineer specializing in robust REST APIs, SAP integration, and modern web technologies.">
+
+  <!-- External Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 7 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-terminal">
+      <div class="preloader-line" id="pl1"><span class="cmd">$</span> initializing_portfolio.exe</div>
+      <div class="preloader-line" id="pl2"><span class="success">&#10003;</span> Loading core modules...</div>
+      <div class="preloader-line" id="pl3"><span class="success">&#10003;</span> Establishing neural connection...</div>
+      <div class="preloader-line" id="pl4"><span class="success">&#10003;</span> Rendering interface...</div>
+      <div class="preloader-line" id="pl5"><span class="cmd">$</span> <span id="typing-status">ready</span><span class="typing-cursor"></span></div>
+      <div class="preloader-progress">
+        <div class="preloader-progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Particles Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal-image" onclick="closeModal()">
+    <span class="modal-image-close" onclick="closeModal()">&times;</span>
+    <img class="modal-image-content" id="modalImage" alt="Project screenshot">
+    <div class="modal-image-caption" id="modalCaption"></div>
+  </div>
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <i class="fas fa-code me-2" style="color: var(--primary-light);"></i>
+        <span id="brand-text">Portfolio</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home" data-cursor="hover">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-cursor="hover">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience" data-cursor="hover">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" data-cursor="hover">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-cursor="hover">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link btn-download-nav" href="Resume%20Muhammad%20Haris%20Hidayat.pdf" download data-cursor="hover">
+              <i class="fas fa-download me-1"></i> Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <div class="container">
+      <div class="row align-items-center min-vh-100">
+        <div class="col-lg-6 reveal-left">
+          <div class="hero-subtitle mb-3">
+            <i class="fas fa-robot me-2"></i>Full Stack Engineer
+          </div>
+          <h1 class="hero-title mb-3">
+            Muhammad<br>Haris Hidayat
+          </h1>
+          <div class="quote-text mb-4">
+            <i class="fas fa-quote-left me-2"></i>
+            <span id="typewriter-text"></span><span class="typing-cursor"></span>
+          </div>
+          <p class="lead mb-4" style="color: var(--text-dark); opacity: 0.85; line-height: 1.7; text-align: justify;">
+            Experienced Full Stack Engineer with a proven track record of success in developing innovative solutions.
+            Proficient in building robust REST APIs, managing data integration from external systems like SAP, and optimising database performance.
+            Skilled in frontend and backend development using HTML, AJAX, jQuery, Vue.js, Ionic, Node.js, Express, and MySQL.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="game-badge"><i class="fas fa-project-diagram"></i>Project Management</span>
+            <span class="game-badge"><i class="fas fa-search"></i>Research</span>
+            <span class="game-badge"><i class="fas fa-smile"></i>Optimistic</span>
+            <span class="game-badge"><i class="fas fa-microchip"></i>AI Enthusiast</span>
+          </div>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#projects" class="btn-futuristic" data-cursor="hover">
+              <i class="fas fa-rocket"></i> View Projects
+            </a>
+            <a href="#contact" class="btn-outline-futuristic" data-cursor="hover">
+              <i class="fas fa-comment-dots"></i> Contact Me
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <div class="profile-frame mx-auto" id="profileFrame">
+            <svg class="profile-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#6BABE5;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#2C5F8A;stop-opacity:1" />
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <circle cx="100" cy="100" r="100" fill="url(#grad)" />
+              <text x="15" y="55" fill="rgba(255,255,255,0.6)" font-size="7" font-family="'JetBrains Mono', monospace">Microsoft Windows [Version 10.0.19045]</text>
+              <text x="15" y="65" fill="rgba(255,255,255,0.6)" font-size="7" font-family="'JetBrains Mono', monospace">(c) Microsoft Corporation. All rights reserved.</text>
+              <text x="15" y="90" fill="white" font-size="9" font-family="'JetBrains Mono', monospace">C:\Users\Haris&gt;<tspan fill="#FFD700" font-weight="bold"> whoami</tspan></text>
+              <text x="15" y="105" fill="#00FF00" font-size="10" font-weight="bold" font-family="'JetBrains Mono', monospace" filter="url(#glow)">haris\fullstack.engineer</text>
+              <text x="15" y="125" fill="white" font-size="9" font-family="'JetBrains Mono', monospace">C:\Users\Haris&gt;<tspan fill="#FFD700" font-weight="bold"> status</tspan></text>
+              <text x="15" y="140" fill="#00FFFF" font-size="10" font-weight="bold" font-family="'JetBrains Mono', monospace" filter="url(#glow)">available_for_collaboration = true</text>
+              <text x="15" y="165" fill="white" font-size="9" font-family="'JetBrains Mono', monospace">C:\Users\Haris&gt;<tspan fill="#FFD700" font-weight="bold" id="cursor-blink">_</tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container py-5">
+      <div class="section-header reveal">
+        <h2>About Me</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6 reveal-left">
+          <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="mb-4">
+              <h4 class="mb-3" style="color: var(--primary-deep);">
+                <i class="fas fa-id-badge me-2"></i>Profile
+              </h4>
+              <p class="text-muted" style="text-align: justify; line-height: 1.8;">
+                Demonstrated ability to enhance user experience and operational efficiency through 
+                effective technology solutions. Additionally, served as an IT Consultant, providing 
+                comprehensive support and expertise in various aspects of IT, and as a Software 
+                Engineer, developing modules for web applications. Proven expertise in SQL,
+                software consulting, and reporting and analysis.
+              </p>
+            </div>
+            <div class="mt-auto">
+              <h4 class="mb-3" style="color: var(--primary-deep);">
+                <i class="fas fa-microchip me-2"></i>Tech Stack
+              </h4>
+              <div>
+                <span class="skill-badge" data-cursor="hover"><i class="fab fa-html5"></i>HTML</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fab fa-php"></i>PHP</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fab fa-js"></i>JavaScript</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fas fa-database"></i>SQL</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fas fa-code"></i>Ajax</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fas fa-code"></i>jQuery</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fab fa-vuejs"></i>Vue.js</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fas fa-mobile-alt"></i>Ionic</span>
+                <span class="skill-badge" data-cursor="hover"><i class="fab fa-node-js"></i>Node.js</span>
+              </div>
+            </div>
+          </div>
+        </div>      
+
+        <div class="col-lg-6 reveal-right">
+          <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="mb-4">
+              <h4 class="mb-3" style="color: var(--primary-deep);">
+                <i class="fas fa-graduation-cap me-2"></i>Education
+              </h4>
+              <div class="d-flex align-items-center">
+                <div class="me-3">
+                  <div style="width: 55px; height: 55px; background: linear-gradient(135deg, var(--primary-light), var(--primary-soft)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                    <i class="fas fa-award"></i>
+                  </div>
+                </div>
+                <div>
+                  <h5 class="fw-bold mb-1">Computer Science</h5>
+                  <p class="text-muted mb-0">Universitas Pendidikan Indonesia</p>
+                </div>
+              </div>
+            </div>      
+            <div class="mt-auto">
+              <h4 class="mb-3" style="color: var(--primary-deep);">
+                <i class="fas fa-pen-square me-2"></i>Research Interest
+              </h4>
+              <div class="p-3 rounded-4" style="background: rgba(107, 171, 229, 0.06); border: 1px solid rgba(107, 171, 229, 0.1);">
+                <p class="text-muted mb-2" style="text-align: justify; line-height: 1.7;">
+                  <strong style="color: var(--primary-deep);">Service Engineering and Collaborative Systems:</strong> Visualising collaborative learning 
+                  that proves the best systems are those which facilitate human interaction naturally.
+                </p>
+              </div>
+              <h4 class="mb-3 mt-3" style="color: var(--primary-deep);">
+                <i class="fa-solid fa-brain"></i>Hobby
+              </h4>
+              <div class="p-3 rounded-4" style="background: rgba(107, 171, 229, 0.06); border: 1px solid rgba(107, 171, 229, 0.1);">
+                <p class="text-muted mb-0" style="text-align: justify; line-height: 1.7;">
+                  <strong style="color: var(--primary-deep);">Complex Systems and Strategy Games:</strong> Analysing Civilization, Sim City, 
+                  and TheoTown is not merely a hobby, but a laboratory for understanding resource 
+                  management, systemic thinking, and scalable architecture. 
+                  <em style="color: var(--primary-light);">(Yes, I write about this unironically.)</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-5">
+    <div class="container py-5">
+      <div class="section-header reveal">
+        <h2>Experience</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-card" data-cursor="hover">
+              <h4 class="fw-bold mb-1" style="color: var(--primary-deep);">AUTO Logistik</h4>
+              <p class="small mb-3" style="color: var(--primary-light); font-weight: 600;">2024 - Present | Full Stack Engineer</p>
+              <ul class="small text-muted mb-0" style="padding-left: 1.2rem; line-height: 1.8;">
+                <li>Designed and developed robust REST APIs to optimize data exchange between external SAP systems and internal applications, significantly improving integration efficiency and data accuracy</li>
+                <li>Automated data transmission through scheduler implementation, resulting in enhanced operational efficiency and reduced manual intervention</li>
+                <li>Designed and implemented MySQL Triggers and Stored Procedures to optimize database processes, driving substantial improvements in system performance and data governance</li>
+                <li>Developed dynamic interfaces using HTML, AJAX, and jQuery, seamlessly integrated with APIs to deliver intuitive and engaging user interactions</li>
+                <li>Engineered a resilient backend infrastructure using Node.js, Express, and MySQL, delivering highly scalable APIs to support evolving business needs</li>
+                <li>Introduced a flagship Fleet Management System module, providing efficient and measurable solutions to optimize fleet operations and drive business success</li>
+                <li>Developed the Android version of the Fleet Management System using Vue.js, Ionic, and PHP with API communication, expanding accessibility and functionality</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-card" data-cursor="hover">
+              <h4 class="fw-bold mb-1" style="color: var(--primary-deep);">Sokka Kreatif Teknologi</h4>
+              <p class="small mb-3" style="color: var(--primary-light); font-weight: 600;">2022 - 2024 | Full Stack Developer</p>
+              <ul class="small text-muted mb-0" style="padding-left: 1.2rem; line-height: 1.8;">
+                <li>Developed modules for https://app.myklink.id with the IT team, covering frontend and backend design using the Sapeltu Core PHP framework</li>
+                <li>Built corporate insight and reporting infrastructure from the ground up using ApexChart and SQL Server to deliver real-time insights for each product</li>
+                <li>Performed backend engineering for mobile applications using the Slim PHP framework</li>
+                <li>Established database mechanisms using SQL Server</li>
+                <li>Collaborated with marketing and product business units to build new MyKlink modules, resulting in a 10% increase in end-user satisfaction and 5% growth in new subscribers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-card" data-cursor="hover">
+              <h4 class="fw-bold mb-1" style="color: var(--primary-deep);">Pou Chen Corporation</h4>
+              <p class="small mb-3" style="color: var(--primary-light); font-weight: 600;">2021 - 2022 | IT Specialist</p>
+              <ul class="small text-muted mb-0" style="padding-left: 1.2rem; line-height: 1.8;">
+                <li>Maintained and controlled Production System database and SAP inbound/outbound data using Oracle, collaborating with SAP representatives</li>
+                <li>Educated and trained department members involved with SAP and other systems, conducted User Acceptance Testing (UAT), and maintained documented issue logs</li>
+                <li>Defined database relational concepts using SQL and project scope using Unified Modelling Language (UML)</li>
+                <li>Developed backend systems using the internal corporate Javascript framework (SJS), implementing CRUD operations, authentication, and authorization within API schemes using Node.js, with MongoDB database configuration</li>
+                <li>Collaborated with 3 Indonesian plants and Taiwan headquarters to ensure data synchronization and operational continuity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5">
+    <div class="container py-5">
+      <div class="section-header reveal">
+        <h2>Projects</h2>
+        <div class="section-line"></div>
+        <p class="text-muted mt-3">Click on boxes to view screenshots</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 reveal-scale">
+          <div class="project-card text-center" data-cursor="hover">
+            <div class="project-icon">
+              <i class="fas fa-hospital"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Clinic</h3>
+            <p class="small text-muted mb-3">Patient management and medical records dashboard</p>
+            <div class="screenshot-box" onclick="openModal('images/klinik.png', 'Clinic System - Patient Management Dashboard')">
+              <img src="images/klinik.png" alt="Clinic System Screenshot" style="display: none;">
+              <div class="content">
+                <i class="fas fa-image"></i>
+                <div>Click to zoom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal-scale">
+          <div class="project-card text-center" data-cursor="hover">
+            <div class="project-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Hospital</h3>
+            <p class="small text-muted mb-3">Comprehensive hospital patient registration</p>
+            <div class="screenshot-box" onclick="openModal('images/rumahsakit.png', 'Hospital System - Patient Registration')">
+              <img src="images/rumahsakit.png" alt="Hospital System Screenshot" style="display: none;">
+              <div class="content">
+                <i class="fas fa-image"></i>
+                <div>Click to zoom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal-scale">
+          <div class="project-card text-center" data-cursor="hover">
+            <div class="project-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Accounting</h3>
+            <p class="small text-muted mb-3">Financial dashboard and reporting</p>
+            <div class="screenshot-box" onclick="openModal('images/akuntansi.png', 'Accounting System - Financial Dashboard')">
+              <img src="images/akuntansi.png" alt="Accounting System Screenshot" style="display: none;">
+              <div class="content">
+                <i class="fas fa-image"></i>
+                <div>Click to zoom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal-scale">
+          <div class="project-card text-center" data-cursor="hover">
+            <div class="project-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Learning</h3>
+            <p class="small text-muted mb-3">Mobile learning app interface</p>
+            <div class="screenshot-box" onclick="openModal('images/mediapembelajaran.jpeg', 'Learning Platform - Mobile App Interface')">
+              <img src="images/mediapembelajaran.jpeg" alt="Learning Platform Screenshot" style="display: none;">
+              <div class="content">
+                <i class="fas fa-image"></i>
+                <div>Click to zoom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 reveal-scale">
+          <div class="project-card text-center" data-cursor="hover">
+            <div class="project-icon">
+              <i class="fas fa-solid fa-cart-flatbed"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Logistics</h3>
+            <p class="small text-muted mb-3">Driver delivery mobile app</p>
+            <div class="screenshot-box" onclick="openModal('images/driver.jpeg', 'Driver - Delivery App')">
+              <img src="images/driver.jpeg" alt="Driver Delivery Screenshot" style="display: none;">
+              <div class="content">
+                <i class="fas fa-image"></i>
+                <div>Click to zoom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal-scale">
+          <div class="project-card text-center" data-cursor="hover">
+            <div class="project-icon">
+              <i class="fas fa-solid fa-boxes-packing"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Admin Logistics</h3>
+            <p class="small text-muted mb-3">Logistics management system</p>
+            <div class="screenshot-box" onclick="openModal('images/adminlogistik.png', 'Admin - Logistics Management System')">
+              <img src="images/adminlogistik.png" alt="Admin Logistics Screenshot" style="display: none;">
+              <div class="content">
+                <i class="fas fa-image"></i>
+                <div>Click to zoom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics and Testimonial -->
+  <section class="py-5">
+    <div class="container py-5">
+      <div class="row g-4 mb-5">
+        <div class="col-6 col-md-3 reveal-scale">
+          <div class="stat-card" data-cursor="hover">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal-scale">
+          <div class="stat-card" data-cursor="hover">
+            <div class="stat-number" data-target="10">0</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal-scale">
+          <div class="stat-card" data-cursor="hover">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Companies</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal-scale">
+          <div class="stat-card" data-cursor="hover">
+            <div class="stat-number" style="font-size: 2.5rem;">&#8734;</div>
+            <div class="stat-label">Solutions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-lg-8 mx-auto">
+          <div class="testimonial-card" data-cursor="hover">
+            <p class="fs-5 fst-italic mb-4" style="text-align: justify; line-height: 1.7; color: var(--text-dark);">
+              "Haris is an exceptional software engineer, whom I often refer to as a genius. 
+              Engaging in discussions with Haris is always an invaluable experience, as he 
+              consistently provides insightful perspectives and innovative solutions. His 
+              expertise in analysis and ability to swiftly tackle problems make him an 
+              invaluable asset to any team."
+            </p>
+            <div class="d-flex align-items-center">
+              <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-light), var(--primary-soft)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; margin-right: 1rem;">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0">Digital Marketing Team</h6>
+                <small class="text-muted">LinkedIn Recommendation</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container py-5">
+      <div class="section-header reveal">
+        <h2>Contact Me</h2>
+        <div class="section-line"></div>
+        <p class="text-muted mt-3">Available for Full-time | Part-time | Remote</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 reveal-left">
+          <a href="mailto:harishidayat@qq.com" class="contact-link" data-cursor="hover">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">Email</h6>
+              <small class="text-muted">harishidayat@qq.com</small>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 reveal-right">
+          <a href="https://wa.me/6285860002666" class="contact-link" data-cursor="hover" target="_blank">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">WhatsApp</h6>
+              <small class="text-muted">+62 858 6000 2666</small>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 reveal-scale">
+          <a href="https://linkedin.com/in/haris-hidayat" class="contact-link" data-cursor="hover" target="_blank">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">LinkedIn</h6>
+              <small class="text-muted">/in/haris-hidayat</small>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 reveal-scale">
+          <a href="https://github.com/Camus10" class="contact-link" data-cursor="hover" target="_blank">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">GitHub</h6>
+              <small class="text-muted">/Camus10</small>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 reveal-scale">
+          <a href="https://www.instagram.com/camus_hh/" class="contact-link" data-cursor="hover" target="_blank">
+            <div class="contact-icon">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">Instagram</h6>
+              <small class="text-muted">@camus_hh</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="mb-1 fw-bold" style="color: var(--primary-deep);">&#169; 2026 Muhammad Haris Hidayat</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <small class="text-muted">Built with code, chocolate, matcha, Sim City and Civilization.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AI Chatbot -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+        <div>
+          <div class="fw-bold" style="font-size: 0.9rem;">Haris AI Assistant</div>
+          <div style="font-size: 0.75rem; opacity: 0.8;">Online</div>
+        </div>
+        <div class="chatbot-status"></div>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chatbot-message bot">Hello! I'm Haris's AI assistant. Ask me anything about his skills, experience, projects, or how to get in touch!</div>
+      </div>
+      <div class="chatbot-quick-replies" id="chatbotQuickReplies">
+        <button class="chatbot-quick-btn" onclick="sendQuickReply('What are your skills?')">Skills</button>
+        <button class="chatbot-quick-btn" onclick="sendQuickReply('Tell me about your experience')">Experience</button>
+        <button class="chatbot-quick-btn" onclick="sendQuickReply('What projects have you built?')">Projects</button>
+        <button class="chatbot-quick-btn" onclick="sendQuickReply('How can I contact you?')">Contact</button>
+        <button class="chatbot-quick-btn" onclick="sendQuickReply('What is your tech stack?')">Tech Stack</button>
+        <button class="chatbot-quick-btn" onclick="sendQuickReply('Are you available for hire?')">Hire</button>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type a message...">
+        <button class="chatbot-send" onclick="sendMessage()" data-cursor="hover">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+    <div class="chatbot-toggle pulse" id="chatbotToggle" data-cursor="hover">
+      <i class="fas fa-comment-dots"></i>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
